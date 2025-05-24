@@ -83,8 +83,7 @@ Use the `Gold_Export_to_CSV` notebook (or `src/export_gold_csv.py`) to:
 
 If you wish to test the pipeline locally, use this sample format for your CSV:
 
-```
-csv
+```csv
 sensor_id,timestamp,temperature,humidity,location
 1001,2025-05-01 00:00:00,72.4,41.2,Room_A
 1002,2025-05-01 00:00:05,75.1,45.9,Room_B
@@ -97,21 +96,20 @@ You can manually drop this into /FileStore/iot_stream in Databricks
 
 ## ✨ Advanced Features Implemented
 
-
-✅ **Bronze/Silver/Gold data lake layers
-✅ **Structured Streaming ingestion
-✅ **Delta Time Travel with versioning
-✅ **Z-Ordering (manual simulation)
-✅ **Notebook chaining with %run
-✅ **CSV export for BI tools
-🟨 **(Optional) REST API with Flask
-🟨 **(Optional) Power BI integration via Databricks SQL
+- [x] Bronze/Silver/Gold data lake layers
+- [x] Structured Streaming ingestion
+- [x] Delta Time Travel with versioning
+- [x] Z-Ordering (manual simulation)
+- [x] Notebook chaining with `%run`
+- [x] CSV export for BI tools
+- [ ] (Optional) REST API with Flask
+- [ ] (Optional) Power BI integration via Databricks SQL
 
 ---
 
 ## 👨‍💻 Author
 
-Derek Acevedo
+**Derek Acevedo**
 [GitHub](www.github.com/poloman2308)
 [Linkedin](www.linkedin.com/in/derekacevedo86)
 
@@ -120,7 +118,5 @@ Derek Acevedo
 ## 💡 Contributions Welcome
 
 Feel free to fork, improve, and submit pull requests to enhance streaming support, add cloud integrations, or expand use cases to real-time dashboards.
-
----
 
 Let me know if you'd like a matching `requirements.txt`, a `LICENSE`, or help pushing this final version to GitHub.
