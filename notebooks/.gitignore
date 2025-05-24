@@ -1,0 +1,13 @@
+# .gitignore
+__pycache__/
+*.pyc
+.DS_Store
+.env
+.venv/
+*.egg-info
+*.log
+.ipynb_checkpoints/
+data/
+delta_tables/
+dbfs/
+
