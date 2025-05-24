@@ -1,5 +1,10 @@
 # 🏗️ IoT Delta Lakehouse (Databricks + PySpark)
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg)](https://www.python.org/)
+[![Apache Spark](https://img.shields.io/badge/Spark-3.3.2-orange.svg)](https://spark.apache.org/)
+[![Delta Lake](https://img.shields.io/badge/Delta%20Lake-2.3.0-brightgreen)](https://delta.io/)
+
 A production-grade Delta Lakehouse pipeline that ingests, transforms, and analyzes IoT sensor logs using Apache Spark, Delta Lake, and Databricks Community Edition.
 
 > Supports both batch and streaming ingestion, layered data architecture (Bronze/Silver/Gold), time travel, Z-Ordering, and external CSV export.
@@ -92,22 +97,15 @@ You can manually drop this into /FileStore/iot_stream in Databricks
 
 ## ✨ Advanced Features Implemented
 
-```
-✅ Bronze/Silver/Gold data lake layers
-✅ Structured Streaming ingestion
-✅ Delta Time Travel with versioning
-✅ Z-Ordering (manual simulation)
-✅ Notebook chaining with %run
-✅ CSV export for BI tools
-🟨 (Optional) REST API with Flask
-🟨 (Optional) Power BI integration via Databricks SQL
-```
 
----
-
-## 📝 License
-
-This project is released under the MIT License.
+✅ **Bronze/Silver/Gold data lake layers
+✅ **Structured Streaming ingestion
+✅ **Delta Time Travel with versioning
+✅ **Z-Ordering (manual simulation)
+✅ **Notebook chaining with %run
+✅ **CSV export for BI tools
+🟨 **(Optional) REST API with Flask
+🟨 **(Optional) Power BI integration via Databricks SQL
 
 ---
 
@@ -115,7 +113,7 @@ This project is released under the MIT License.
 
 Derek Acevedo
 [GitHub](www.github.com/poloman2308)
-[Linkedin](www.linkedin.com/in/derekacevedo86
+[Linkedin](www.linkedin.com/in/derekacevedo86)
 
 ---
 
