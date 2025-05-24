@@ -26,10 +26,11 @@ A production-grade Delta Lakehouse pipeline that ingests, transforms, and analyz
 
 ```
 iot-delta-lakehouse/
-├── notebooks/              # All Databricks notebooks
-├── src/                    # Python scripts for local ingestion/transform
-├── data/                   # Raw CSVs (ignored in .gitignore)
-├── delta_tables/           # Delta output (ignored in .gitignore)
+├── notebooks/ # All Databricks notebooks (Bronze, Silver, Gold, etc.)
+│ └── .gitignore # Ignore notebook checkpoint files
+├── src/ # Python scripts for local Delta processing
+├── data/ # Raw CSV files (ignored in version control)
+├── delta_tables/ # Output Delta tables (ignored in version control)
 └── requirements.txt
 ```
 
