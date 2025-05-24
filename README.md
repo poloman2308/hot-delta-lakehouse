@@ -27,10 +27,11 @@ A production-grade Delta Lakehouse pipeline that ingests, transforms, and analyz
 ```
 iot-delta-lakehouse/
 ├── notebooks/ # All Databricks notebooks (Bronze, Silver, Gold, etc.)
-│ └── .gitignore # Ignore notebook checkpoint files
 ├── src/ # Python scripts for local Delta processing
 ├── data/ # Raw CSV files (ignored in version control)
 ├── delta_tables/ # Output Delta tables (ignored in version control)
+├── .gitignore
+├── README.md
 └── requirements.txt
 ```
 
@@ -112,9 +113,8 @@ You can manually drop this into /FileStore/iot_stream to simulate a stream event
 
 ## 👨‍💻 Author
 
-**Derek Acevedo**
-[GitHub](https://www.github.com/poloman2308)
-[Linkedin](https://www.linkedin.com/in/derekacevedo86)
+Derek Acevedo
+[GitHub](www.github.com/poloman2308) • [LinkedIn](www.linkedin.com/in/derekacevedo86)
 
 ---
 
