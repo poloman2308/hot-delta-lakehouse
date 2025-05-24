@@ -92,6 +92,7 @@ You can manually drop this into /FileStore/iot_stream in Databricks
 
 ## ✨ Advanced Features Implemented
 
+```
 ✅ Bronze/Silver/Gold data lake layers
 ✅ Structured Streaming ingestion
 ✅ Delta Time Travel with versioning
@@ -100,6 +101,7 @@ You can manually drop this into /FileStore/iot_stream in Databricks
 ✅ CSV export for BI tools
 🟨 (Optional) REST API with Flask
 🟨 (Optional) Power BI integration via Databricks SQL
+```
 
 ---
 
