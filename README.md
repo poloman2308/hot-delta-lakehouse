@@ -78,7 +78,8 @@ Use the `Gold_Export_to_CSV` notebook (or `src/export_gold_csv.py`) to:
 
 If you wish to test the pipeline locally, use this sample format for your CSV:
 
-```csv
+```
+csv
 sensor_id,timestamp,temperature,humidity,location
 1001,2025-05-01 00:00:00,72.4,41.2,Room_A
 1002,2025-05-01 00:00:05,75.1,45.9,Room_B
