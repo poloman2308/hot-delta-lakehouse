@@ -52,39 +52,50 @@ iot-delta-lakehouse/
 <details> <summary>📈 Click to expand Mermaid diagram code</summary>
 
 ```mermaid
-flowchart TD
-  subgraph Ingestion
-    A1[Raw CSV Files<br>(sensor_logs.csv)]
-    A2[Streaming CSV<br>Drop into /iot_stream]
+flowchart LR
+
+  %% ---------- INGESTION ----------
+  subgraph Ingest
+    A1[📄 Batch CSV:<br/>sensor_logs.csv] --> B1(Bronze_Ingest_Batch.py)
+    A2[📄 Streaming CSV:<br/>/FileStore/iot_stream] --> B2(Bronze_Ingest_Stream.py)
   end
 
+  %% ---------- BRONZE ----------
   subgraph Bronze Layer
-    B1[Bronze_Ingest_Batch.py]
-    B2[Bronze_Ingest_Stream.py]
-    A1 --> B1
-    A2 --> B2
-    B1 & B2 --> BZ[Delta Table<br>bronze/sensor_logs]
+    B1 --> DB[Delta Table:<br/><b>bronze/sensor_logs</b>]
+    B2 --> DB
   end
 
+  %% ---------- SILVER ----------
   subgraph Silver Layer
-    C1[Silver_Transform.py]
-    BZ --> C1
-    C1 --> SZ[Delta Table<br>silver/sensor_logs]
+    DB --> C1[Silver_Transform.py]
+    C1 --> DS[Delta Table:<br/><b>silver/sensor_logs</b>]
   end
 
+  %% ---------- GOLD ----------
   subgraph Gold Layer
-    D1[Gold_Aggregate.py]
-    SZ --> D1
-    D1 --> GZ[Delta Table<br>gold/sensor_hourly_avg]
+    DS --> D1[Gold_Aggregate.py]
+    D1 --> DG[Delta Table:<br/><b>gold/sensor_hourly_avg</b>]
   end
 
+  %% ---------- EXPORT ----------
   subgraph Export
-    GZ --> E1[CSV Export<br>iot_gold_export.csv]
-    E1 --> EXT[Download via<br>Databricks FileStore]
+    DG --> E1[📤 Export CSV:<br/>iot_gold_export.csv]
+    E1 --> LINK[🌐 Download via<br/>FileStore]
   end
 
-  classDef delta fill:#e6f7ff,stroke:#0099cc,stroke-width:2px;
-  class BZ,SZ,GZ delta;
+  %% ---------- STYLES ----------
+  style A1 fill:#fffbe7,stroke:#444
+  style A2 fill:#fffbe7,stroke:#444
+  style B1 fill:#dde1ff,stroke:#444
+  style B2 fill:#dde1ff,stroke:#444
+  style DB fill:#cfe2f3,stroke:#444
+  style C1 fill:#d9ead3,stroke:#444
+  style DS fill:#b6d7a8,stroke:#444
+  style D1 fill:#fce5cd,stroke:#444
+  style DG fill:#f9cb9c,stroke:#444
+  style E1 fill:#f4cccc,stroke:#444
+  style LINK fill:#e7f5ff,stroke:#444
 ```
 </details>
 
