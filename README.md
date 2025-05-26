@@ -100,6 +100,24 @@ flowchart LR
 
 ---
 
+## 📘 Component Glossary
+
+| Component                 | Type            | Description                                                               |
+| ------------------------- | --------------- | ------------------------------------------------------------------------- |
+| `sensor_logs.csv`         | Batch Input     | Static raw IoT sensor data file ingested into the Bronze layer            |
+| `/FileStore/iot_stream`   | Streaming Input | Simulated folder for real-time file drops triggering stream ingestion     |
+| `Bronze_Ingest_Batch.py`  | PySpark Script  | Handles one-time batch ingestion into Delta Bronze table                  |
+| `Bronze_Ingest_Stream.py` | PySpark Script  | Listens for new streaming files and ingests into Bronze Delta Lake        |
+| `bronze/sensor_logs`      | Delta Table     | Raw ingested sensor logs (schema-on-read + append-only)                   |
+| `Silver_Transform.py`     | PySpark Script  | Cleans, deduplicates, and filters data for the Silver layer               |
+| `silver/sensor_logs`      | Delta Table     | Validated and refined version of Bronze data                              |
+| `Gold_Aggregate.py`       | PySpark Script  | Aggregates hourly temperature and humidity metrics                        |
+| `gold/sensor_hourly_avg`  | Delta Table     | Final analytical dataset ready for BI or export                           |
+| `iot_gold_export.csv`     | Exported CSV    | Final gold-layer dataset available for download from Databricks FileStore |
+| `FileStore`               | Databricks Path | Accessible public path to download files or simulate streams              |
+
+---
+
 ## ⚙️ How to Use
 
 ### ▶️ 1. Run in Databricks
@@ -162,13 +180,24 @@ You can manually drop this into /FileStore/iot_stream to simulate a stream event
 
 ---
 
+## 💡 Ideas to Expand the Pipeline
+
+| Idea                                           | Description                                                                |
+| ---------------------------------------------- | -------------------------------------------------------------------------- |
+| **Anomaly Detection in Gold Layer**            | Use statistical thresholds or ML to flag temperature/humidity outliers     |
+| **Alert System Integration**                   | Send email, Slack, or webhook alerts for anomalies or threshold breaches   |
+| **Power BI or Tableau Integration**            | Connect directly to the Gold Delta table using JDBC or exported CSV        |
+| **Airflow Orchestration**                      | Replace Databricks Jobs with Apache Airflow for cross-platform scheduling  |
+| **Delta Table Partitioning by Date**           | Improve performance by partitioning on `date(timestamp)` in large datasets |
+| **Cloud Integration (AWS S3)**                 | Store Delta tables in S3 for scalable, production-grade deployments        |
+| **REST API with Flask/FastAPI**                | Expose Gold data through REST endpoints for external access or dashboards  |
+| **Real-Time Dashboard with Dash or Streamlit** | Visualize streaming updates live in a browser-based dashboard              |
+| **CI/CD for Notebook Validation**              | Lint, test, and auto-deploy Databricks notebooks with GitHub Actions       |
+| **Schema Evolution & Drift Detection**         | Automatically handle and flag new sensor schema versions                   |
+
+---
+
 ## 👨‍💻 Author
 
 Derek Acevedo
 [GitHub](www.github.com/poloman2308) • [LinkedIn](www.linkedin.com/in/derekacevedo86)
-
----
-
-## 💡 Contributions Welcome
-
-Feel free to fork, improve, and submit pull requests to enhance streaming support, add cloud integrations, or expand use cases to real-time dashboards.
