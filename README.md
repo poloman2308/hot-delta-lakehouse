@@ -49,6 +49,47 @@ iot-delta-lakehouse/
 
 ---
 
+<details> <summary>📈 Click to expand Mermaid diagram code</summary>
+
+```mermaid
+flowchart TD
+  subgraph Ingestion
+    A1[Raw CSV Files<br>(sensor_logs.csv)]
+    A2[Streaming CSV<br>Drop into /iot_stream]
+  end
+
+  subgraph Bronze Layer
+    B1[Bronze_Ingest_Batch.py]
+    B2[Bronze_Ingest_Stream.py]
+    A1 --> B1
+    A2 --> B2
+    B1 & B2 --> BZ[Delta Table<br>bronze/sensor_logs]
+  end
+
+  subgraph Silver Layer
+    C1[Silver_Transform.py]
+    BZ --> C1
+    C1 --> SZ[Delta Table<br>silver/sensor_logs]
+  end
+
+  subgraph Gold Layer
+    D1[Gold_Aggregate.py]
+    SZ --> D1
+    D1 --> GZ[Delta Table<br>gold/sensor_hourly_avg]
+  end
+
+  subgraph Export
+    GZ --> E1[CSV Export<br>iot_gold_export.csv]
+    E1 --> EXT[Download via<br>Databricks FileStore]
+  end
+
+  classDef delta fill:#e6f7ff,stroke:#0099cc,stroke-width:2px;
+  class BZ,SZ,GZ delta;
+```
+</details>
+
+---
+
 ## ⚙️ How to Use
 
 ### ▶️ 1. Run in Databricks
