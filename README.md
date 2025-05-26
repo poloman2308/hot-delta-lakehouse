@@ -49,7 +49,7 @@ iot-delta-lakehouse/
 
 ---
 
-<details> <summary>📈 Click to expand Mermaid diagram code</summary>
+## 📈 End-to-End Flow
 
 ```mermaid
 flowchart LR
@@ -97,7 +97,6 @@ flowchart LR
   style E1 fill:#f4cccc,stroke:#444
   style LINK fill:#e7f5ff,stroke:#444
 ```
-</details>
 
 ---
 
